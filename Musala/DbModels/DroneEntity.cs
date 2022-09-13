@@ -1,4 +1,4 @@
-﻿using Musala.EFModels;
+﻿using static Musala.Utils.CommonTypes;
 
 namespace Musala.DbModels
 {
