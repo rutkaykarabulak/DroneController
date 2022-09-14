@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Musala.Api.Services;
 using Musala.DbModels;
+using Musala.EFModels;
 
 namespace Musala.Api.Controllers
 {
@@ -7,12 +9,21 @@ namespace Musala.Api.Controllers
     [ApiController]
     public class DroneController : ControllerBase
     {
+        #region Properties
+        private IDroneService droneService;
+        #endregion
         #region Actions
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok("Test");
+            var list = droneService.GetAllDrones();
+            return Ok(list);
         }
         #endregion
+
+        public DroneController(PostgreSQLDbContext postgreSQLDbContext)
+        {
+            droneService = new DroneService(postgreSQLDbContext);
+        }
     }
 }
