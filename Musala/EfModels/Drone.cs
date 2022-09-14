@@ -1,28 +1,34 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using Musala.Utils;
 namespace Musala.EFModels
 {
-    [Table("Drone")]
+    [Table(Constants.drone)]
     public class Drone
     {
         [Key, Required]
         public int Id { get; set; }
 
-        [MaxLength(100), Required]
+        [MaxLength(Constants.maxCharacterLength), Required]
         public string SerialNumber { get; set; } = string.Empty;
 
         [Required]
         public DroneModel Model { get; set; }
 
-        [Required]
-        public double WeightLimit { get; set; }
+        [Required, Range(Constants.weightLimitMin,Constants.weightLimitMax)]
+        public float Weight { get; set; }
+
+        [Required, Range(Constants.batteryLevelMin, Constants.batteryLevelMax)]
+        [DefaultValue(Constants.batteryLevelMax)]
+        public float BatteryCapacity { get; set; }
 
         [Required]
-        public double BatteryCapacity { get; set; }
-
-        [Required]
+        [DefaultValue(DroneState.IDLE)]
         public DroneState State { get; set; }
+
+        [DefaultValue(0)]
+        public float WeightLimit { get; set; }
     }
 
     public enum DroneModel

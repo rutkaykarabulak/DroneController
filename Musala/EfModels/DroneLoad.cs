@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Musala.Utils;
 
 namespace Musala.EFModels
 {
-    [Table("DroneLoad")]
+    [Table(Constants.droneLoad)]
     public class DroneLoad
     {
         [Key, Required]
