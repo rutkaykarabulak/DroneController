@@ -1,7 +1,7 @@
 ﻿using System.Buffers.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using Musala.Utils;
 namespace Musala.EFModels
 {
     [Table("Medication")]
@@ -10,18 +10,18 @@ namespace Musala.EFModels
         [Key, Required]
         public int Id { get; set; }
 
-        [Required, RegularExpression("^[a-zA-Z0-9\\_-]+$", ErrorMessage = "Allowing to entry only letters, numbers and dashes.")]
+        [Required, RegularExpression(Constants.regexOnlyLettersNumbersAndDashes, ErrorMessage = Constants.regexOnlyLettersNumbersAndDashesErr)]
 
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        public double Weight { get; set; }
+        public float Weight { get; set; }
 
-        [Required, MaxLength(100), RegularExpression("^[A-Z0-9\\_]+$", ErrorMessage = "Allowing only upper cases, under scores and numbers.")]
+        [Required, MaxLength(Constants.maxCharacterLength), RegularExpression(Constants.regexOnlyUpperCasesUnderScoreAndNumbers, ErrorMessage = Constants.regexOnlyUpperCasesUnderScoreAndNumbersErr)]
         public string Code { get; set; } = string.Empty;
 
         //[Required]
-        //public Base64 Image { get; set; } // TODO ASK SENSEI
+        //public Base64 Image { get; set; } // TODO
 
 
     }

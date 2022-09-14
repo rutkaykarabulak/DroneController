@@ -1,16 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using Musala.Utils;
 namespace Musala.DbModels
 {
     public class MedicationEntity
     {
         public int Id { get; set; }
 
-        [RegularExpression("^[a-zA-Z0-9\\_-]+$", ErrorMessage = "Allowing to entry only letters, numbers and dashes.")]
+        [Required, RegularExpression(Constants.regexOnlyLettersNumbersAndDashes, ErrorMessage = Constants.regexOnlyLettersNumbersAndDashesErr)]
         public string Name { get; set; } = string.Empty;
-        public double Weight { get; set; }
+        [DefaultValue(0)]
+        public float Weight { get; set; } = 0;
 
-        [MaxLength(100), RegularExpression("^[A-Z0-9\\_]+$", ErrorMessage = "Allowing only upper cases, under scores and numbers.")]
+        [Required, MaxLength(Constants.maxCharacterLength), RegularExpression(Constants.regexOnlyUpperCasesUnderScoreAndNumbers, ErrorMessage = Constants.regexOnlyUpperCasesUnderScoreAndNumbersErr)]
         public string Code { get; set; } = string.Empty;
 
         //public Base64 Image { get; set; } // TODO 

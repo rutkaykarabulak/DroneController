@@ -1,4 +1,7 @@
-﻿using static Musala.Utils.CommonTypes;
+﻿using System.ComponentModel.DataAnnotations;
+using static Musala.Utils.CommonTypes;
+using Musala.Utils;
+using System.ComponentModel;
 
 namespace Musala.DbModels
 {
@@ -11,23 +14,34 @@ namespace Musala.DbModels
         /// <summary>
         /// Serial number of the drone.
         /// </summary>
+        [Required, MaxLength(Constants.maxCharacterLength)]
         public string SerialNumber { get; set; } = string.Empty;
         /// <summary>
         /// Model of the drone.
         /// </summary>
+        [Required]
         public DroneModel Model { get; set; }
         /// <summary>
-        /// Weight limit of the drone. (500 gr max)
+        /// Weight of the drone(total weight of the item it carries)
         /// </summary>
-        public double WeightLimit { get; set; }
+        [Required, Range(Constants.weightLimitMin, Constants.weightLimitMax, ErrorMessage = Constants.droneWeightError)]
+        public float Weight{ get; set; }
+
+        /// <summary>
+        /// Maximum weight that drone can lift depending on its model.
+        /// </summary>
+        public float WeightLimit { get; set; }
 
         /// <summary>
         /// Battery level of drone.
         /// </summary>
-        public double BatteryCapacity { get; set; }
+
+        [DefaultValue(Constants.batteryLevelMax)]
+        public float BatteryCapacity { get; set; } = Constants.batteryLevelMax;
         /// <summary>
         /// State of the drone.
         /// </summary>
+        [Required]
         public DroneState State { get; set; }
     }
 }
