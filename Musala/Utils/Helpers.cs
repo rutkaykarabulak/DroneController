@@ -4,7 +4,7 @@ namespace Musala.Utils
 {
     public class Helpers
     {
-        public float getEligibleWeightLimitForDrone(DroneModel droneModel)
+        public static float GetEligibleWeightLimitForDrone(DroneModel droneModel)
         {
             float value = 0f;
             switch(droneModel)
