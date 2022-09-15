@@ -24,7 +24,8 @@ namespace Musala.DbModels
         /// <summary>
         /// Weight of the drone(total weight of the item it carries)
         /// </summary>
-        [Required, Range(Constants.weightLimitMin, Constants.weightLimitMax, ErrorMessage = Constants.droneWeightError)]
+        [Range(Constants.weightLimitMin, Constants.weightLimitMax, ErrorMessage = Constants.droneWeightError)]
+        [DefaultValue(0)]
         public float Weight{ get; set; }
 
         /// <summary>

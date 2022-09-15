@@ -51,7 +51,7 @@ namespace Musala.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Drone");
+                    b.ToTable("Drone", (string)null);
                 });
 
             modelBuilder.Entity("Musala.EFModels.DroneLoad", b =>
@@ -70,7 +70,7 @@ namespace Musala.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DroneLoad");
+                    b.ToTable("DroneLoad", (string)null);
                 });
 
             modelBuilder.Entity("Musala.EFModels.Medication", b =>
@@ -95,7 +95,7 @@ namespace Musala.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medication");
+                    b.ToTable("Medication", (string)null);
                 });
 #pragma warning restore 612, 618
         }

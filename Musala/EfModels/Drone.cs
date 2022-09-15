@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Musala.Utils;
+using static Musala.Utils.CommonTypes;
+
 namespace Musala.EFModels
 {
     [Table(Constants.drone)]
@@ -29,24 +31,5 @@ namespace Musala.EFModels
 
         [DefaultValue(0)]
         public float WeightLimit { get; set; }
-    }
-
-    public enum DroneModel
-    {
-        Lightweight, // 0
-        Middleweight, // 1
-        Cruiserweight, // 2
-        Heavyweight // 3
-
-    }
-
-    public enum DroneState
-    {
-        IDLE, // 0
-        LOADING, // 1
-        LOADED, // 2
-        DELIVERING, // 3
-        DELIVERED, // 4
-        RETURNING // 5
     }
 }
