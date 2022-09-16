@@ -7,7 +7,8 @@ namespace Musala.EFModels
     [Table(Constants.droneLoad)]
     public class DroneLoad
     {
-        [Key, Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public int Id { get; set; }
 
         [Required]

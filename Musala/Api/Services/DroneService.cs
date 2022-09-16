@@ -109,7 +109,8 @@ namespace Musala.Api.Services
                         Id = medication.Id,
                         Code = medication.Code,
                         Weight = medication.Weight,
-                        Name = medication.Name
+                        Name = medication.Name,
+                        Image = medication.Image
                     };
                     result.Add(medicationEntity);
                 }
@@ -125,7 +126,6 @@ namespace Musala.Api.Services
             float weightLimit = Helpers.GetEligibleWeightLimitForDrone(drone.Model);
             Drone droneData = new()
             {
-                Id = r.Next(0, 100),
                 Model = drone.Model,
                 SerialNumber = drone.SerialNumber,
                 State = drone.State,
@@ -156,7 +156,6 @@ namespace Musala.Api.Services
             Random r = new();
             DroneLoad droneLoad = new()
             {
-                Id = r.Next(0, 100),
                 DroneId = drone.Id,
                 MedicationId = medication.Id
             };

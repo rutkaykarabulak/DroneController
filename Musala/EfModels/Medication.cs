@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Musala.Utils;
 namespace Musala.EFModels
 {
-    [Table("Medication")]
+    [Table(Constants.medication)]
     public class Medication
     {
-        [Key, Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public int Id { get; set; }
 
         [Required, RegularExpression(Constants.regexOnlyLettersNumbersAndDashes, ErrorMessage = Constants.regexOnlyLettersNumbersAndDashesErr)]
@@ -20,8 +21,7 @@ namespace Musala.EFModels
         [Required, MaxLength(Constants.maxCharacterLength), RegularExpression(Constants.regexOnlyUpperCasesUnderScoreAndNumbers, ErrorMessage = Constants.regexOnlyUpperCasesUnderScoreAndNumbersErr)]
         public string Code { get; set; } = string.Empty;
 
-        //[Required]
-        //public Base64 Image { get; set; } // TODO
+        public string Image { get; set; } = string.Empty;
 
 
     }

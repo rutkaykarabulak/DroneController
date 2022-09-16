@@ -9,7 +9,8 @@ namespace Musala.EFModels
     [Table(Constants.drone)]
     public class Drone
     {
-        [Key, Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public int Id { get; set; }
 
         [MaxLength(Constants.maxCharacterLength), Required]
