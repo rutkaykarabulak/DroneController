@@ -109,7 +109,8 @@ namespace Musala.Api.Services
                         Id = medication.Id,
                         Code = medication.Code,
                         Weight = medication.Weight,
-                        Name = medication.Name
+                        Name = medication.Name,
+                        Image = medication.Image
                     };
                     result.Add(medicationEntity);
                 }

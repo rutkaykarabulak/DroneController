@@ -19,7 +19,8 @@ namespace Musala.Api.Services
                 Id = m.Id,
                 Name = m.Name,
                 Code = m.Code,
-                Weight = m.Weight
+                Weight = m.Weight,
+                Image = m.Image,
             }));
 
             return result;
@@ -38,7 +39,8 @@ namespace Musala.Api.Services
                 Id = medication.Id,
                 Weight = medication.Weight,
                 Code = medication.Code,
-                Name = medication.Name
+                Name = medication.Name,
+                Image = medication.Image,
             };
         }
         public MedicationService(PostgreSQLDbContext dbContext)

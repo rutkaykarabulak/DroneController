@@ -21,8 +21,7 @@ namespace Musala.EFModels
         [Required, MaxLength(Constants.maxCharacterLength), RegularExpression(Constants.regexOnlyUpperCasesUnderScoreAndNumbers, ErrorMessage = Constants.regexOnlyUpperCasesUnderScoreAndNumbersErr)]
         public string Code { get; set; } = string.Empty;
 
-        //[Required]
-        //public Base64 Image { get; set; } // TODO
+        public string Image { get; set; } = string.Empty;
 
 
     }
