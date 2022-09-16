@@ -32,7 +32,7 @@ namespace Musala.Api.Services
                 WeightLimit = row.WeightLimit,
                 State = row.State
             }));
-            return result;
+            return result.OrderBy(d => d.Id);
         }
         public async Task<DroneEntity> GetDrone(int id)
         {
@@ -145,9 +145,9 @@ namespace Musala.Api.Services
             float totalWeight = drone.Weight + medication.Weight;
 
             bool isDroneLoadable = (
-                totalWeight < drone.WeightLimit
-                && (drone.State == DroneState.IDLE)
-                && drone.BatteryCapacity > Constants.criticBatteryLevel);
+                totalWeight <= drone.WeightLimit
+                && (drone.State == DroneState.IDLE || drone.State == DroneState.LOADED)
+                && drone.BatteryCapacity >= Constants.criticBatteryLevel);
 
             if(!isDroneLoadable)
             {
@@ -166,7 +166,7 @@ namespace Musala.Api.Services
             Drone droneData = await _postgreDbContext.Drones.FindAsync(drone.Id);
             droneData.State = DroneState.LOADED;
             droneData.Weight = totalWeight;
-
+            droneData.BatteryCapacity -= Constants.droneLoadingBatteryCost;
             _postgreDbContext.SaveChanges();
 
             return droneLoad;

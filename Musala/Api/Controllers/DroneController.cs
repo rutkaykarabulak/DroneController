@@ -14,14 +14,18 @@ namespace Musala.Api.Controllers
         private IMedicationService medicationService;
         #endregion
         #region Actions
+        /// <summary>
+        /// Gets all drone from database
+        /// </summary>
+        /// <returns>List of all registered drones</returns>
         [HttpGet]
         public  IActionResult Get()
         {
-
-            return Ok("test");
+            List<DroneEntity> drones = droneService.GetAllDrones().ToList();
+            return Ok(drones);
         }
 
-        [HttpPost]
+        [HttpPost("Register")]
         public IActionResult Post([FromBody] DroneEntity drone)
         {
             if(!ModelState.IsValid)
@@ -58,13 +62,14 @@ namespace Musala.Api.Controllers
             DroneLoad droneLoad = await droneService.LoadDrone(drone, medication);
             if (droneLoad == null)
             {
-                return NotFound("Drone is not loadable");
+                return NotFound($"Drone is not loadable due to its weight constraints." +
+                    $" \nDrone weight limit: {drone.WeightLimit}, Drone + Medication weight: {drone.Weight + medication.Weight}");
             }
             return Ok(droneLoad);
         }
 
         [HttpGet("CheckBattery")]
-        public async Task<IActionResult> Get([FromQuery]int droneId)
+        public async Task<IActionResult> CheckBattery([FromQuery]int droneId)
         {
             if (!ModelState.IsValid)
             {
@@ -80,6 +85,36 @@ namespace Musala.Api.Controllers
             string batteryInPercentage = String.Format("{0:0.##\\%}", batteryLevel);
 
             return Ok(batteryInPercentage);
+        }
+
+        [HttpGet("CheckLoadedDrone")]
+        public IActionResult CheckLoadedDrone([FromQuery] int droneId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            List<MedicationEntity>? medications =  droneService.CheckLoadedDrone(droneId).ToList();
+            if (medications == null)
+            {
+                return NotFound("There is no medications loaded in given drone");
+            }
+
+            return Ok(medications);
+        }
+
+        [HttpGet("CheckAvailableDrone")]
+        public IActionResult CheckAvailableDrones()
+        {
+            List<DroneEntity> drones =   droneService.CheckAvailableDrones().ToList();
+
+            if (drones == null)
+            {
+                return NotFound("There is no available drone");
+            }
+
+            return Ok(drones);
         }
         #endregion
 

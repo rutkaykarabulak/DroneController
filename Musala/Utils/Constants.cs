@@ -8,6 +8,7 @@
         public const float batteryLevelMax = 100;
         public const int maxCharacterLength = 100;
         public const float criticBatteryLevel = 25;
+        public const float droneLoadingBatteryCost = 15;
         // regex
         public const string regexOnlyLettersNumbersAndDashes = "^[a-zA-Z0-9\\_-]+$";
         public const string regexOnlyLettersNumbersAndDashesErr = "Allowing to entry only letters, numbers and dashes.";
