@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Musala.Utils;
 namespace Musala.EFModels
 {
-    [Table("Medication")]
+    [Table(Constants.medication)]
     public class Medication
     {
-        [Key, Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public int Id { get; set; }
 
         [Required, RegularExpression(Constants.regexOnlyLettersNumbersAndDashes, ErrorMessage = Constants.regexOnlyLettersNumbersAndDashesErr)]

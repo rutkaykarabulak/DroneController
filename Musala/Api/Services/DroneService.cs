@@ -125,7 +125,6 @@ namespace Musala.Api.Services
             float weightLimit = Helpers.GetEligibleWeightLimitForDrone(drone.Model);
             Drone droneData = new()
             {
-                Id = r.Next(0, 100),
                 Model = drone.Model,
                 SerialNumber = drone.SerialNumber,
                 State = drone.State,
@@ -156,7 +155,6 @@ namespace Musala.Api.Services
             Random r = new();
             DroneLoad droneLoad = new()
             {
-                Id = r.Next(0, 100),
                 DroneId = drone.Id,
                 MedicationId = medication.Id
             };
