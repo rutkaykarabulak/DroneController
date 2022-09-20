@@ -1,0 +1,1 @@
+{"Drone Id:51    Battery:100%","Drone Id:52    Battery:100%","Drone Id:53    Battery:100%","Drone Id:54    Battery:100%","Drone Id:55    Battery:75%","Drone Id:56    Battery:50%","Drone Id:57    Battery:20%","Drone Id:58    Battery:25%","Drone Id:59    Battery:95%","Drone Id:60    Battery:100%","Drone Id:50    Battery:85%"}

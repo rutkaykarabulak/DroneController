@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musala", "Musala\Musala.csproj", "{8E6C628B-5FB6-4151-87E7-EFAA11FAD3CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Musala", "Musala\Musala.csproj", "{8E6C628B-5FB6-4151-87E7-EFAA11FAD3CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Periodic task", "Periodic task", "{2F11EF61-928C-4307-AC2D-C0EAD20F7D2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteryLogger", "Periodic Task\BatteryLogger\BatteryLogger.csproj", "{89A86772-F916-4B8D-B293-72AC85091210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{8E6C628B-5FB6-4151-87E7-EFAA11FAD3CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E6C628B-5FB6-4151-87E7-EFAA11FAD3CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E6C628B-5FB6-4151-87E7-EFAA11FAD3CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89A86772-F916-4B8D-B293-72AC85091210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A86772-F916-4B8D-B293-72AC85091210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A86772-F916-4B8D-B293-72AC85091210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A86772-F916-4B8D-B293-72AC85091210}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{89A86772-F916-4B8D-B293-72AC85091210} = {2F11EF61-928C-4307-AC2D-C0EAD20F7D2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F51E8AB-8029-46AE-9996-5AD6D5A9DEC9}
