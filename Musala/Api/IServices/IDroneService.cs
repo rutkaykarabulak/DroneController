@@ -16,7 +16,7 @@ namespace Musala.Api.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Drone with given id if it exists in database, null otherwise.</returns>
-        public abstract Task<DroneEntity> GetDrone(int id);
+        public abstract Task<DroneEntity?> GetDrone(int id);
 
         /// <summary>
         /// Inserts a new drone to the database
@@ -51,5 +51,11 @@ namespace Musala.Api.Services
         /// <param name="droneId"></param>
         /// <returns>Battery level of drone if drone exists, null otherwise.</returns>
         public abstract Task<float?> CheckDroneBattery(int droneId);
+        
+        /// <summary>
+        /// Gets all batteries in percentage to be used by scheduled task to log drone batteries.
+        /// </summary>
+        /// <returns></returns>
+        public abstract IEnumerable<string> GetBatteries();
     }
 }

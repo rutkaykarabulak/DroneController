@@ -29,6 +29,6 @@
         public const float cruiserWeight = 400;
         public const float heavyWeight = 500;
 
-
+        // error messages
     }
 }

@@ -4,6 +4,7 @@ using Musala.DbModels;
 using Musala.EFModels;
 using static Musala.Utils.CommonTypes;
 using System.Security.Cryptography;
+using System.Linq;
 
 namespace Musala.Api.Services
 {
@@ -34,15 +35,14 @@ namespace Musala.Api.Services
             }));
             return result.OrderBy(d => d.Id);
         }
-        public async Task<DroneEntity> GetDrone(int id)
+        public async Task<DroneEntity?> GetDrone(int id)
         {
  
             Drone? droneData = await _postgreDbContext.Drones.FindAsync(id);
 
             if(droneData == null)
             {
-                string errMessage = "There is no drone with given id.";
-                throw new Exception(errMessage);
+                return null;
             }
 
             return new DroneEntity()
@@ -60,7 +60,10 @@ namespace Musala.Api.Services
         {
             List<DroneEntity> result = new();
 
-            List<Drone> dataList = _postgreDbContext.Drones.Where(d => d.State == DroneState.IDLE).ToList();
+            List<Drone> dataList = _postgreDbContext.Drones.Where(d => d.State == DroneState.IDLE
+            || d.State == DroneState.LOADED
+            && d.Weight < d.WeightLimit
+            && d.BatteryCapacity >= Constants.criticBatteryLevel).ToList();
 
             dataList.ForEach(row => result.Add(new DroneEntity()
             {
@@ -93,12 +96,9 @@ namespace Musala.Api.Services
             List<MedicationEntity> result = new();
 
             List<DroneLoad> dataListDroneLoad = _postgreDbContext.DroneLoads.Where(d => d.DroneId == droneId).ToList();
-            if (dataListDroneLoad == null)
-            {
-                return null;
-            }
-            List<Medication> dataListMedication = _postgreDbContext.Medications.ToList();
-
+            List<int> medicationIds = dataListDroneLoad.Select(m => m.MedicationId).ToList();
+            List<Medication> dataListMedication = _postgreDbContext.Medications.Where(m => medicationIds.Contains(m.Id)).ToList();
+            
             foreach(DroneLoad dl in dataListDroneLoad)
             {
                 Medication? medication = dataListMedication.FirstOrDefault(m => m.Id == dl.MedicationId);
@@ -122,7 +122,6 @@ namespace Musala.Api.Services
 
         public Drone Create(DroneEntity drone)
         {
-            Random r = new();
             float weightLimit = Helpers.GetEligibleWeightLimitForDrone(drone.Model);
             Drone droneData = new()
             {
@@ -153,7 +152,6 @@ namespace Musala.Api.Services
             {
                 return null;
             }
-            Random r = new();
             DroneLoad droneLoad = new()
             {
                 DroneId = drone.Id,
@@ -169,6 +167,15 @@ namespace Musala.Api.Services
             _postgreDbContext.SaveChanges();
 
             return droneLoad;
+        }
+
+        public IEnumerable<string> GetBatteries()
+        {
+            
+
+            List<string> batteries = _postgreDbContext.Drones.Select(d => "Drone Id:" + d.Id + "    Battery:" + String.Format("{0:0.##\\%}",d.BatteryCapacity)).ToList();
+                
+            return batteries;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Musala.Utils
+﻿using System.ComponentModel;
+
+namespace Musala.Utils
 {
     public interface CommonTypes
     {
@@ -8,7 +10,6 @@
             Middleweight, // 1
             Cruiserweight, // 2
             Heavyweight // 3
-
         }
         public enum DroneState
         {
