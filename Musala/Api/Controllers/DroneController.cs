@@ -95,8 +95,8 @@ namespace Musala.Api.Controllers
                 return BadRequest();
             }
 
-            List<MedicationEntity>? medications =  droneService.CheckLoadedDrone(droneId).ToList();
-            if (medications == null)
+            List<MedicationEntity> medications = droneService.CheckLoadedDrone(droneId).ToList();
+            if (medications.Count == 0)
             {
                 return NotFound("There is no medications loaded in given drone");
             }
@@ -107,7 +107,7 @@ namespace Musala.Api.Controllers
         [HttpGet("CheckAvailableDrone")]
         public IActionResult CheckAvailableDrones()
         {
-            List<DroneEntity> drones =   droneService.CheckAvailableDrones().ToList();
+            List<DroneEntity> drones = droneService.CheckAvailableDrones().ToList();
 
             if (drones == null)
             {
@@ -116,6 +116,20 @@ namespace Musala.Api.Controllers
 
             return Ok(drones);
         }
+
+        [HttpGet("CheckAllBatteries")]
+        public IActionResult CheckAllBatteries()
+        {
+            List<string> result = droneService.GetBatteries().ToList();
+
+            if(result == null)
+            {
+                return NotFound("There is no drone to show its battery");
+            }
+
+            return Ok(result);
+        }
+
         #endregion
 
         public DroneController(PostgreSQLDbContext postgreSQLDbContext)
