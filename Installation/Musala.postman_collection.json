@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "6869bd29-b202-41a6-b181-2231da51688b",
 		"name": "Musala",
-		"description": "Example usage of \n\nPOST- Register \n\n{\n    \"SerialNumber\": \"TestRutkay2\",\n    \"Model\":1\n}\nOnly information you need to give the api call is SerialNumber and Model of the drone. However, you can add additional things such as its State,Battery,Weight. \nPlease do not forget, the WeightLimit of drone will be calculated by system depending on drone's model. For example if drone model is LightWeight it can carry maximum 200 gr so it's WeightLimit is 200 gr.\n\n* The service will create a new drone object with\n* State: IDLE (unless you specify other)\n* Weight: 0 gr\n* Model: Model\n* SerialNumber: serialNumber\n* BatteryCapacity: 100 (unless you specify an another battery capacity)\n\nPOST- LoadDrone\n\nPlease pass the query url DroneId and MedicationId. The service will find the drone and medication with given Ids and load the drone with medication.",
+		"description": "Example usage of \n\nPOST- Register \n\n{\n    \"SerialNumber\": \"TestRutkay2\",\n    \"Model\":1\n}\nOnly information you need to give the api call is SerialNumber and Model of the drone. However, you can add additional things such as its State,Battery,Weight. \nPlease do not forget, the WeightLimit of drone will be calculated by system depending on drone's model. For example if drone model is LightWeight it can carry maximum 200 gr so it's WeightLimit is 200 gr.\n\n* The service will create a new drone object with\n* State: IDLE (unless you specify other)\n* Weight: 0 gr\n* Model: Model\n* SerialNumber: serialNumber\n* BatteryCapacity: 100 (unless you specify an another battery capacity)\n\nPOST- LoadDrone\n\nPlease pass the query url DroneId and MedicationId. The service will find the drone and medication with given Ids and load the drone with medication.\n\nNote** In order to see medications, please use GetAllMedications endpoint and select a medicationId that you would like to load on drone",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -195,6 +195,14 @@
 						"CheckAllBatteries"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllMedications",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
