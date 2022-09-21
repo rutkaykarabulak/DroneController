@@ -50,3 +50,7 @@ The service should allow:
 - checking loaded medication items for a given drone; 
 - checking available drones for loading;
 - check drone battery level for a given drone;
+
+# VERY USEFUL NOTE
+- I created a list of API calls for you to test the app easily and smoothly. Please find the `Musala.postman_collection.json` file which located in the repository `Installiaton/Musala.postman_collection.json`
+- Import the json file to your Postman and test all of the API endpoints freely.
