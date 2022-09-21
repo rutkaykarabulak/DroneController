@@ -52,6 +52,6 @@ The service should allow:
 - check drone battery level for a given drone;
 
 # VERY USEFUL NOTE
-- I created a list of API calls for you to test the app easily and smoothly. Please find the `Musala.postman_collection.json` file which located in the repository `Installiaton/Musala.postman_collection.json`
+- I created a list of API calls for you to test the app easily and smoothly. Please find the `Musala.postman_collection.json` file which is located in the repository `Installiaton/Musala.postman_collection.json`
 - Import the json file to your Postman and test all of the API endpoints freely.
-- You can read the `Documentation` that created of POSTMAN calls and how to use API's
+- You can read the `documentation` of Postman collection to see how to use API endpoints
