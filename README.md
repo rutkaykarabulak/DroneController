@@ -37,3 +37,13 @@ Please find the list of design decisions that I've been made during the developm
 
 - Every loading process will consume `%10` of drone's battery
 - Drone that has less then `%25` battery is not loadable
+
+
+### This service will allows you to 
+
+The service should allow:
+- registering a drone;
+- loading a drone with medication items;
+- checking loaded medication items for a given drone; 
+- checking available drones for loading;
+- check drone battery level for a given drone;
