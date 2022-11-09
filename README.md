@@ -1,5 +1,5 @@
 # Musala
-## Interview task for musala
+## REST APIs project that shows CRUD operation on several different objects using PostgreSQL
 
 ### Instructions to run the app
 
