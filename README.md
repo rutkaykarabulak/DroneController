@@ -1,11 +1,11 @@
-# Musala
+# Drone Controller
 ## REST APIs project that shows CRUD operation on several different objects using PostgreSQL
 
 ### Instructions to run the app
 
 #### 1- Installing the database
 
-- Musala application uses PostgreSQL as a database, therefore in order to run the project successfully you need to download the PostgreSQL.
+- Drone Controller application uses PostgreSQL as a database, therefore in order to run the project successfully you need to download the PostgreSQL.
 - Please find the following link to download PostgreSQL version 14.5.
 https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 - Make sure that you've selected all available options in installation
